@@ -1,0 +1,12 @@
+// Variables
+
+body {
+  font-family: sans-serif;
+}
+
+.map-review-app {
+  &__map {
+    width: 100vm;
+    height: 100vh;
+  }
+}
