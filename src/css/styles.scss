@@ -1,12 +1,14 @@
 // Variables
+$mapWidth: 100vw;
+$mapHeight: 100vh;
 
 body {
   font-family: sans-serif;
 }
 
-.map-review-app {
+.map-reviews-app {
   &__map {
-    width: 100vm;
-    height: 100vh;
+    width: $mapWidth;
+    height: $mapHeight;
   }
 }

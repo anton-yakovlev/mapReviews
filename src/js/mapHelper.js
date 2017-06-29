@@ -1,40 +1,16 @@
-// ----- Yande Map API methods ----- //
+// ----- Yandex Map API methods ----- //
+const MAP_ID = 'generalMap';
 
-const API_ID = 6069515;
-const DEFAULT_API_VERSION = '5.64';
-
-class VkHelper {
-    init(VK) {
-        return new Promise((resolve, reject) => {
-            VK.init({
-                apiId: API_ID
-            });
-
-            VK.Auth.login(data => {
-                if (data.session) {
-                    resolve();
-                } else {
-                    reject(new Error('Не удалось авторизоваться'));
-                }
-            }, 2);
-        });
-    }
-
-    api(method, options, VK) {
-        if (!options.v) {
-            options.v = DEFAULT_API_VERSION;
-        }
-
-        return new Promise((resolve, reject) => {
-            VK.api(method, options, data => {
-                if (data.error) {
-                    reject(new Error(data.error.error_msg));
-                } else {
-                    resolve(data.response.items);
-                }
-            });
+/* global ymaps */
+class MapHelper {
+    createMap() {
+        return new ymaps.Map(MAP_ID, {
+            center: [55.76, 37.64],
+            zoom: 5
+        }, {
+            searchControlProvider: 'yandex#search'
         });
     }
 }
 
-module.exports = new VkHelper;
+module.exports = new MapHelper;
