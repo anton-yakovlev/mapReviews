@@ -17,6 +17,7 @@ try {
         .then(() => new Promise(resolve => ymaps.ready(resolve)))
         .then( () => {
             mapHelper.createMap();
+            mapHelper.listeners();
         })
         .catch(e => {
             console.error(e.message);
