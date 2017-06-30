@@ -1,5 +1,6 @@
 // ----- Yandex Map API methods ----- //
 const MAP_ID = 'generalMap';
+const viewHelper = require('./viewHelper');
 let mapObject;
 
 /* global ymaps */
@@ -14,17 +15,18 @@ class MapHelper {
     }
 
     getAddress(coords) {
-        return ymaps.geocode(coords).then(function (res) {
-            const firstGeoObject = res.geoObjects.get(0);
-
-            return firstGeoObject.getAddressLine();
-        });
+        return ymaps.geocode(coords);
     }
 
     clickHandeler(e) {
         const coords = e.get('coords');
 
-        console.log(this.getAddress(coords));
+        this.getAddress(coords)
+            .then(res => res.geoObjects.get(0).getAddressLine())
+            .then((address) => {
+                viewHelper.renderReviewForm({address: address});
+                //console.log(address);
+            });
     }
 
     listeners() {

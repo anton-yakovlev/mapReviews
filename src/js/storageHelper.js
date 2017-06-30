@@ -1,28 +1,18 @@
 // ----- Storage methods ----- //
 
-const STORAGE_ALL = 'allFriends';
-const STORAGE_SAVED = 'savedFriends';
-const currentStorage = {
-    items: {
-        [STORAGE_ALL]: [],
-        [STORAGE_SAVED]: []
-    },
-    search: {
-        [STORAGE_ALL]: '',
-        [STORAGE_SAVED]: ''
-    }
-};
+const STORAGE_NAME = 'reviews';
+const currentStorage = {};
 
 class StorageHelper {
     saveLocalStorage() {
-        const savedFriends = this.getCurrentStorage(STORAGE_SAVED);
+        const savedFriends = this.getCurrentStorage();
 
         localStorage.removeItem(STORAGE_SAVED);
         localStorage.setItem(STORAGE_SAVED, JSON.stringify(savedFriends));
     }
 
-    getLocalStorage(storageName = STORAGE_SAVED) {
-        return JSON.parse(localStorage.getItem(storageName)) || null;
+    getLocalStorage() {
+        return JSON.parse(localStorage.getItem(STORAGE_NAME)) || null;
     }
 
     setCurrentStorage(model, storageName) {

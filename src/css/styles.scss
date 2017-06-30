@@ -1,14 +1,157 @@
 // Variables
 $mapWidth: 100vw;
 $mapHeight: 100vh;
+$defaultStep: 12px;
+$colorApp: red;
+$colorGray: #ccc;
+$errorContainerWidth: 600px;
+$closeSize: 24px;
 
 body {
   font-family: sans-serif;
+  background-color: $colorGray;
 }
 
-.map-reviews-app {
+.reviews-app {
   &__map {
     width: $mapWidth;
     height: $mapHeight;
+    cursor: default;
+  }
+
+  &__error {
+    &-container {
+      width: $errorContainerWidth;
+      max-width: 100%;
+      border-radius: $defaultStep;
+      border: 1px solid $colorApp;
+      background-color: #fff;
+      text-align: center;
+      padding: $defaultStep * 2;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &-message {
+      font-size: 16px;
+      margin-bottom: $defaultStep;
+    }
+  }
+
+  &__dialog-wrapper {
+
+  }
+}
+
+.review-form {
+  &__dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__header {
+    background-color: $colorApp;
+    padding: $defaultStep $defaultStep * 2;
+    border-radius: $defaultStep $defaultStep 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      margin-right: $defaultStep;
+    }
+
+    &-close {
+      flex: none;
+      width: $defaultStep * 3;
+      height: $defaultStep * 3;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all .1s;
+      padding: $defaultStep;
+      position: relative;
+      transform: rotate(45deg);
+      border: none;
+      background-color: transparent;
+
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        width: 60%;
+        background-color: #fff;
+        height: $defaultStep / 4;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transition: all .1s;
+      }
+
+      &:before {
+        transform: translate(-50%, -50%);
+      }
+
+      &:after {
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, .7);
+
+        &:before,
+        &:after {
+          background-color: #000;
+        }
+      }
+
+      &:focus,
+      &:active {
+        outline: 0;
+      }
+    }
+  }
+
+  &__body {
+    padding: $defaultStep $defaultStep * 2;
+    background-color: #fff;
+  }
+
+  &__footer {
+    text-align: center;
+    background-color: #fff;
+    padding: $defaultStep $defaultStep * 2;
+    border-radius: 0 0 $defaultStep $defaultStep;
+  }
+}
+
+.btn {
+  background-color: $colorApp;
+  color: #fff;
+  padding: $defaultStep $defaultStep * 2;
+  border-radius: $defaultStep;
+  font-size: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all .1s;
+
+  &:hover {
+    color: $colorApp;
+    background-color: #fff;
+    border-color: $colorApp;
+  }
+
+  &:active {
+    background-color: darken($colorApp, 10%);
+  }
+
+  &:focus {
+    outline: 0;
   }
 }
