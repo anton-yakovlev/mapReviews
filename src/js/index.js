@@ -5,11 +5,11 @@ require('../css/styles.scss');
 // ----- Get Helpers and required libraries ----- //
 const mapHelper = require('./mapHelper');
 const viewHelper = require('./viewHelper');
-// const listenerHelper = require('./listenersHelper');
+const listenerHelper = require('./listenersHelper');
 // const storageHelper = require('./storageHelper');
 
 // ----- Start set listeners ----- //
-// listenerHelper.setHandlers();
+listenerHelper.setHandlers();
 
 // ----- Start App ----- //
 try {

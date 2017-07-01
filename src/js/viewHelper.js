@@ -23,6 +23,11 @@ class ViewHelper {
             message: 'Ошибка: ' + message || DEFAULT_ERROR_TEXT
         });
     }
+
+    // ----- Show errors ----- //
+    closeDialog() {
+        dialogContainer.innerHTML = '';
+    }
 }
 
 module.exports = new ViewHelper;

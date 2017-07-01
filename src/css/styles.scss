@@ -7,6 +7,10 @@ $colorGray: #ccc;
 $errorContainerWidth: 600px;
 $closeSize: 24px;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   background-color: $colorGray;
@@ -51,6 +55,16 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  &__section {
+    margin-bottom: $defaultStep * 2;
+
+    &-title {
+      font-size: 16px;
+      color: $colorApp;
+      margin-bottom: $defaultStep / 2;
+    }
   }
 
   &__header {
@@ -121,13 +135,30 @@ body {
   &__body {
     padding: $defaultStep $defaultStep * 2;
     background-color: #fff;
+    border-radius: 0 0 $defaultStep $defaultStep;
   }
 
-  &__footer {
-    text-align: center;
-    background-color: #fff;
-    padding: $defaultStep $defaultStep * 2;
-    border-radius: 0 0 $defaultStep $defaultStep;
+  &__fieldset {
+    margin: 0 0 $defaultStep 0;
+    padding: 0;
+    border: none;
+  }
+
+  &__textarea,
+  &__input {
+    border-radius: $defaultStep / 2;
+    border: 1px solid $colorGray;
+    padding: $defaultStep / 2 $defaultStep;
+    width: 100%;
+
+    &:focus {
+      outline: 0;
+      border-color: $colorApp;
+    }
+  }
+
+  &__textarea {
+    height: $defaultStep * 12;
   }
 }
 
