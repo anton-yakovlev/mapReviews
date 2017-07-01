@@ -6,9 +6,27 @@
 
     <div class="review-form__body">
         <div class="review-form__section">
-            <div class="review-form__section-title">
-                Отзывов пока нет...
-            </div>
+            {{#unless reviews}}
+                <div class="review-form__section-title">
+                    Отзывов пока нет...
+                </div>
+            {{/unless}}
+
+            {{#if reviews}}
+                <ul class="review-form__list">
+                    {{#each reviews}}
+                        <li class="review-form__list-item">
+                            <div class="review-form__list-item-header">
+                                <strong>{{name}}</strong> {{place}} {{datetime}}
+                            </div>
+
+                            <div class="review-form__list-item-comment">
+                                {{comment}}
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
         </div>
 
         <div class="review-form__section">
@@ -16,7 +34,7 @@
                 Ваш отзыв
             </div>
 
-            <form class="review-form__form">
+            <form class="review-form__form" id="reviewForm">
                 <fieldset class="review-form__fieldset">
                     <input class="review-form__input" id="reviewName" name="reviewName" placeholder="Ваше имя" required>
                 </fieldset>
@@ -31,7 +49,10 @@
                               placeholder="Поделитесь впечатлениями" required></textarea>
                 </fieldset>
 
-                <button type="submit" class="btn">Добавить</button>
+                <input type="hidden" id="reviewAddress" name="reviewAddress" value="{{address}}">
+                <input type="hidden" id="reviewCoords" name="reviewCoords" value="{{coords}}">
+
+                <button type="submit" class="btn" id="reviewSubmit">Добавить</button>
             </form>
         </div>
     </div>

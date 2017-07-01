@@ -43,10 +43,6 @@ body {
       margin-bottom: $defaultStep;
     }
   }
-
-  &__dialog-wrapper {
-
-  }
 }
 
 .review-form {
@@ -59,6 +55,10 @@ body {
 
   &__section {
     margin-bottom: $defaultStep * 2;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
 
     &-title {
       font-size: 16px;
@@ -159,6 +159,26 @@ body {
 
   &__textarea {
     height: $defaultStep * 12;
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    &-item {
+      margin-bottom: $defaultStep;
+
+      &-header {
+        font-size: 14px;
+        margin-bottom: $defaultStep / 2;
+      }
+
+      &-comment {
+        font-size: 12px;
+        font-style: italic;
+      }
+    }
   }
 }
 
