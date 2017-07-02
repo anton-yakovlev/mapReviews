@@ -8,6 +8,8 @@ const viewHelper = require('./viewHelper');
 const listenerHelper = require('./listenersHelper');
 // const storageHelper = require('./storageHelper');
 
+/* global ymaps */
+
 // ----- Start set listeners ----- //
 listenerHelper.setHandlers();
 
@@ -18,6 +20,7 @@ try {
         .then( () => {
             mapHelper.createMap();
             mapHelper.listeners();
+            mapHelper.updateMap();
         })
         .catch(e => {
             viewHelper.showError(e.message);

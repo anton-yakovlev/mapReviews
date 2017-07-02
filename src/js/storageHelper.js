@@ -24,7 +24,9 @@ class StorageHelper {
     }
 
     getLocalStorage(address) {
-        return JSON.parse(localStorage.getItem(STORAGE_NAME))[address] || null;
+        const reviews = this.getLocalStorageAll();
+
+        return reviews[address] || [];
     }
 }
 

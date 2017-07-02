@@ -4,10 +4,6 @@ const storageHelper = require('./storageHelper');
 const errorTemplate = require('./../hbs/errorTemplate.hbs');
 const reviewFormTemplate = require('./../hbs/reviewFormTemplate.hbs');
 const DEFAULT_ERROR_TEXT = 'Что-то пошло не так, пожалуйста, попробуйте перезагрузить страницу';
-
-
-const allFriendsListElement = document.querySelector('#allFriendsList .user-list');
-const savedFriendsListElement = document.querySelector('#savedFriendsList .user-list');
 const appContainer = document.getElementById('mapReviewAppContainer');
 const dialogContainer = document.getElementById('dialogContainer');
 

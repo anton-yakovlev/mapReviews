@@ -20,15 +20,30 @@ class MapHelper {
     }
 
     setPlacemark(coords) {
-        if (!coords) {
-            return;
-        }
-
-        let placemark = new ymaps.Placemark(coords.split(','), {});
-
-        console.log(coords.split(','), placemark, mapObject);
+        const placemark = new ymaps.Placemark(coords.split(','), {});
 
         mapObject.geoObjects.add(placemark);
+    }
+
+    updateMap() {
+        let reviews = storageHelper.getLocalStorageAll();
+        let placemarks = [];
+
+        for (let key in reviews) {
+            if (reviews.hasOwnProperty(key)) {
+                let currentCoords = [];
+
+                reviews[key].forEach((item) => {
+                    currentCoords.push(item.coords);
+                });
+
+                placemarks = placemarks.concat(currentCoords);
+            }
+        }
+
+        placemarks.forEach(item => {
+            this.setPlacemark(item);
+        })
     }
 
     clickHandeler(e) {
