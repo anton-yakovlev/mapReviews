@@ -19,6 +19,10 @@ class StorageHelper {
         localStorage.setItem(STORAGE_NAME, JSON.stringify(currentStorage));
     }
 
+    removeLocalStorage() {
+        localStorage.removeItem(STORAGE_NAME);
+    }
+
     getLocalStorageAll() {
         return JSON.parse(localStorage.getItem(STORAGE_NAME)) || {};
     }

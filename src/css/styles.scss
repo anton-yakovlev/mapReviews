@@ -43,6 +43,15 @@ body {
       margin-bottom: $defaultStep;
     }
   }
+
+  &__controls {
+    padding: $defaultStep $defaultStep * 2;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: $defaultStep;
+  }
 }
 
 .review-form {
@@ -204,5 +213,49 @@ body {
 
   &:focus {
     outline: 0;
+  }
+}
+
+.slider {
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    &-item {
+      &-header {
+
+      }
+
+      &-comment {
+
+      }
+    }
+  }
+
+  &__controls {
+    &-item {
+      &_left {
+
+      }
+
+      &_right {
+
+      }
+    }
+  }
+
+  &__footer {
+    &-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      &-item {
+        &-link {
+
+        }
+      }
+    }
   }
 }

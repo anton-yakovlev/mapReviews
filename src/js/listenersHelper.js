@@ -5,6 +5,7 @@ const mapHelper = require('./mapHelper');
 const CLOSE_DILAOG_ID = 'closeDialog';
 const RELOAD_AFTER_ERROR_ID = 'reloadAfterError';
 const REVIEW_FORM_ID = 'reviewForm';
+const CONTROLS_REMOVE_PLACEMARKS_ID = 'removePlacemarks';
 
 class Listeners {
     clickHandler(e) {
@@ -18,6 +19,11 @@ class Listeners {
         // ----- Click listener for close button on dialog ----- //
         if (target.id === CLOSE_DILAOG_ID) {
             viewHelper.closeDialog();
+        }
+
+        // ----- Click listener for rmove placemarks button ----- //
+        if (target.id === CONTROLS_REMOVE_PLACEMARKS_ID) {
+            mapHelper.removePlacemarks();
         }
     }
 
@@ -36,7 +42,10 @@ class Listeners {
                 coords: data.review.coords,
                 reviews: storageHelper.getLocalStorage(data.address)
             });
-            mapHelper.setPlacemark(data.review.coords);
+            mapHelper.setPlacemarks([{
+                address: data.address,
+                coords: data.review.coords
+            }]);
         }
     }
 

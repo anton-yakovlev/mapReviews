@@ -6,7 +6,6 @@ require('../css/styles.scss');
 const mapHelper = require('./mapHelper');
 const viewHelper = require('./viewHelper');
 const listenerHelper = require('./listenersHelper');
-// const storageHelper = require('./storageHelper');
 
 /* global ymaps */
 
