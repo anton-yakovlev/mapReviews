@@ -2,10 +2,14 @@
 const viewHelper = require('./viewHelper');
 const storageHelper = require('./storageHelper');
 const mapHelper = require('./mapHelper');
+const sliderHelper = require('./sliderHelper');
 const CLOSE_DILAOG_ID = 'closeDialog';
 const RELOAD_AFTER_ERROR_ID = 'reloadAfterError';
 const REVIEW_FORM_ID = 'reviewForm';
 const CONTROLS_REMOVE_PLACEMARKS_ID = 'removePlacemarks';
+const SLIDER_LEGEND_LINK_CLASS_NAME = 'slider__footer-list-item-link';
+const SLIDER_ITEM_LINK_CLASS_NAME = 'slider__list-item-link';
+const SLIDER_ARROW_LINK_CLASS_NAME = 'slider__controls-item';
 
 class Listeners {
     clickHandler(e) {
@@ -21,9 +25,24 @@ class Listeners {
             viewHelper.closeDialog();
         }
 
-        // ----- Click listener for rmove placemarks button ----- //
+        // ----- Click listener for remove placemarks button ----- //
         if (target.id === CONTROLS_REMOVE_PLACEMARKS_ID) {
             mapHelper.removePlacemarks();
+        }
+
+        // ----- Click listener for slider address link ----- //
+        if (target.classList.contains(SLIDER_ITEM_LINK_CLASS_NAME)) {
+            sliderHelper.addressClickHandler(target);
+        }
+
+        // ----- Click listener for slider footer link ----- //
+        if (target.classList.contains(SLIDER_LEGEND_LINK_CLASS_NAME)) {
+            sliderHelper.legendClickHandler(target);
+        }
+
+        // ----- Click listener for slider arrow link ----- //
+        if (target.classList.contains(SLIDER_ARROW_LINK_CLASS_NAME)) {
+            sliderHelper.arrowClickHandler(target);
         }
     }
 

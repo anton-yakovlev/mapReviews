@@ -2,6 +2,7 @@
 const MAP_ID = 'generalMap';
 const viewHelper = require('./viewHelper');
 const storageHelper = require('./storageHelper');
+const sliderHelper = require('./sliderHelper');
 const CLUSTERER_GRID_SIZE = 100;
 const DEFAULT_ZOOM = 15;
 const START_COORDINATES = [55.76, 37.64];
@@ -131,6 +132,8 @@ class MapHelper {
                     viewHelper.renderReviewsSlider({
                         reviews: geoObjects
                     });
+
+                    sliderHelper.init();
                 } else {
                     viewHelper.renderReviewForm({
                         address: address,

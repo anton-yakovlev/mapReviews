@@ -5,6 +5,7 @@ $defaultStep: 12px;
 $colorApp: red;
 $colorGray: #ccc;
 $errorContainerWidth: 600px;
+$sliderContainerWidth: 400px;
 $closeSize: 24px;
 
 * {
@@ -222,38 +223,103 @@ body {
     padding: 0;
     margin: 0;
 
-    &-item {
-      &-header {
+    &-wrap {
+      position: relative;
+      margin: 0 $defaultStep * 3;
+      height: $defaultStep * 10;
+      margin-bottom: $defaultStep;
+      width: $sliderContainerWidth;
+    }
 
+    &-item {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+
+      &.active {
+        display: block;
+      }
+
+      &-header {
+        margin-bottom: $defaultStep;
       }
 
       &-comment {
+        font-style: italic;
+      }
 
+      &-link {
+        color: $colorApp;
+        text-decoration: none;
+
+        &:hover {
+          color: darken($colorApp, 10%)
+        }
       }
     }
   }
 
   &__controls {
     &-item {
-      &_left {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: $defaultStep;
+      height: $defaultStep;
+      cursor: pointer;
+      border-top: $defaultStep solid transparent;
+      border-bottom: $defaultStep solid transparent;
+      transition: all .1s;
 
+      &_left {
+        left: $defaultStep * 2;
+        border-right: $defaultStep solid $colorGray;
+
+        &:hover {
+          border-right-color: darken($colorGray, 10%);
+        }
       }
 
       &_right {
+        right: $defaultStep * 2;
+        border-left: $defaultStep solid $colorGray;
 
+        &:hover {
+          border-left-color: darken($colorGray, 10%);
+        }
       }
     }
   }
 
   &__footer {
+    border-top: 1px solid $colorGray;
+
     &-list {
       list-style-type: none;
       padding: 0;
       margin: 0;
+      display: flex;
+      justify-content: center;
 
       &-item {
-        &-link {
+        margin: $defaultStep / 4;
+        padding: 0 $defaultStep / 4;
 
+        &.active {
+          border-bottom: 1px solid $colorApp;
+        }
+
+        &-link {
+          color: $colorApp;
+          text-decoration: none;
+
+          &:hover {
+            color: darken($colorApp, 10%)
+          }
         }
       }
     }

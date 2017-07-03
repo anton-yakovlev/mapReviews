@@ -1,37 +1,44 @@
 <div class="review-form__dialog">
     <div class="review-form__header">
-        <div class="review-form__header-title">Все скомпанованные точки</div>
+        <div class="review-form__header-title">Все отзывы по данной точке</div>
         <button class="review-form__header-close" id="closeDialog"></button>
     </div>
 
     <div class="review-form__body">
         <div class="review-form__section">
-            <div class="slider">
-                <ul class="slider__list">
-                    {{#each reviews}}
-                        <li class="slider__list-item">
-                            <div class="slider__list-item-header">
-                                {{address}} {{name}} {{place}} {{datetime}}
-                            </div>
+            <div class="slider" id="reviewSlider">
+                <div class="slider__list-wrap">
+                    <ul class="slider__list">
+                        {{#each reviews}}
+                            <li class="slider__list-item" data-id="{{@index}}">
+                                <div class="slider__list-item-header">
+                                    <a href="#" data-address="{{address}}"
+                                       class="slider__list-item-link">{{address}}</a>
+                                </div>
 
-                            <div class="slider__list-item-comment">
-                                {{comment}}
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
+                                <div class="slider__list-item-header">
+                                    {{name}} {{place}} {{datetime}}
+                                </div>
+
+                                <div class="slider__list-item-comment">
+                                    {{comment}}
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
 
                 <div class="slider__controls">
-                    <div class="slider__controls-left"></div>
-                    <div class="slider__controls-right"></div>
+                    <div class="slider__controls-item slider__controls-item_left" data-id="arrowLeft"></div>
+                    <div class="slider__controls-item slider__controls-item_right" data-id="arrowRight"></div>
                 </div>
 
                 <div class="slider__footer">
                     <ul class="slider__footer-list">
                         {{#each reviews}}
-                            <li class="slider__footer-list-item">
+                            <li class="slider__footer-list-item" data-id="{{@index}}">
                                 <a href="#" class="slider__footer-list-item-link"
-                                   data-coords="{{coords}}">{{@index}}</a>
+                                   data-id="{{@index}}">{{@index}}</a>
                             </li>
                         {{/each}}
                     </ul>
